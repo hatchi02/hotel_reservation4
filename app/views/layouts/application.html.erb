@@ -11,6 +11,45 @@
   </head>
 
   <body>
+    <header>
+      <h1>Potepan Share</h1>
+        <div class="header-menu">
+          <%# ログイン中にユーザーネームを表示 %>
+          <%if user_signed_in?%>
+            <!-- 折り畳み展開ポインタ -->
+            <div class='user-menu' onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+              <a style="cursor:pointer;">
+                <%= current_user.name %> ▼ 
+              </a>
+            </div>
+            <!-- 折り畳み展開ポインタ -->
+
+            <!-- ここから 折り畳まれ部分 -->
+            <!--ここの部分が折りたたまれる＆展開される部分になります。自由に記述してください。-->
+            <div class="accordion-menu" id="open" style="display:none;clear:both;" >
+              <ul>
+                <li><%= link_to '施設の新規登録', new_room_path %></li>
+                <li><%= link_to '予約済み一覧', reservations_path %></li>
+                <li><%= link_to '登録済み一覧', '/rooms/own' %></li>
+                <li><%= link_to 'アカウント設定', '/users/account' %></li>
+                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
+            <!--// ここまで 折り畳まれ部分 -->
+          <% else %>
+            <li><%= link_to 'アカウント登録', new_user_registration_path %></li>
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
+        <% end %>
+        </div>
+    </header>
+
     <%= yield %>
+
+    <footer>
+      <div class="footer-content">
+        <a href="/" class="footer-title">Potepan Share</a>
+        <p>Copyright © Potepan Share 2023 All rights reserved</p>
+      </div>
+    </footer>
   </body>
 </html>
