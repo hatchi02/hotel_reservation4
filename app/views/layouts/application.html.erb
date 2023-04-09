@@ -11,6 +11,10 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+
     <header>
       <h1>Potepan Share</h1>
         <div class="header-menu">
@@ -29,7 +33,11 @@
             <div class="accordion-menu" id="open" style="display:none;clear:both;" >
               <ul>
                 <li><%= link_to '施設の新規登録', new_room_path %></li>
-                <li><%= link_to '予約済み一覧', reservations_path %></li>
+                <%
+=begin%>
+ <li><%= link_to '予約済み一覧', reservations_path %></li> 
+<%
+=end%>
                 <li><%= link_to '登録済み一覧', '/rooms/own' %></li>
                 <li><%= link_to 'アカウント設定', '/users/account' %></li>
                 <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
