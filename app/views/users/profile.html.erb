@@ -1,0 +1,20 @@
+<%= render "shared/user_config" %>
+
+<div class='account-contents'>
+  <div class="top-account-content">
+    <h2>アカウント</h2>
+    <%= link_to '編集', edit_user_registration_path %>
+  </div>
+  <div class='mail-information'>
+    <p>アイコン画像</p>
+    <div><%= image_tag current_user.image.blank? ? 'default-avatar' : current_user.image.url %></div>
+  </div>
+  <div class='password-information'>
+    <p>名前</p>
+    <%= current_user.name %>
+  </div>
+  <div>
+    <p>自己紹介</p>
+    <%= current_user.profile %>
+  </div>
+</div>
