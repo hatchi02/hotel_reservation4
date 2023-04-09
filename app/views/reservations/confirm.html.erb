@@ -1,0 +1,34 @@
+<h2>予約内容の確認</h2>
+
+<dl>
+	<dt>チェックイン日</dt>
+	<dd><%= @reservation.checkin %></dd>
+	<dt>チェックアウト日</dt>
+	<dd><%= @reservation.checkout %></dd>
+	<dt>日数</dt>
+	<dd><%= @stay_days %></dd>
+	<dt>人数</dt>
+	<dd><%= @reservation.guest %></dd>
+	<dt>合計金額</dt>
+	<dd><%= @cost %></dd>
+</dl>
+
+<p>上記内容で正しければ「確定」ボタンを押してください。</p>
+
+<%= form_for @reservation, method: :post, url: reservations_path do |form| %>
+	<%= form.hidden_field :checkin %>
+	<%= form.hidden_field :checkout %>
+	<%= form.hidden_field :guest %>
+    <%= form.hidden_field :user_id %>
+    <%= form.hidden_field :room_id %>
+	<%= form.submit '予約を確定' %>
+<% end %>
+
+<%= form_for @reservation, method: :post, url: back_reservation_path do |form| %>
+	<%= form.hidden_field :checkin %>
+	<%= form.hidden_field :checkout %>
+	<%= form.hidden_field :guest %>
+    <%= form.hidden_field :user_id %>
+    <%= form.hidden_field :room_id %>
+	<%= form.submit 'キャンセル' %>
+<% end %>

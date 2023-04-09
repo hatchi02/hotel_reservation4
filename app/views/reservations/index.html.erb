@@ -1,2 +1,35 @@
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+<h3>予約済み一覧</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>合計金額</th>
+      <th>チェックイン</th>
+      <th>チェックアウト</th>
+      <th>予約確定日</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+    <% room = Room.find(reservation.room_id)%>
+    <% day = reservation.checkout - reservation.checkin %>
+    <% days = day.to_i %>
+    <% cost = room.charge * days * reservation.guest %>
+    <tr>
+      <td><%= image_tag room.image.blank? ? 'default-room' :room.image.url , size: "120x70"  %></td>
+      <td><%= room.name%></td>
+      <td><%= room.detail%></td>
+      <td><%= cost %></td>
+      <td><%= reservation.checkin %></td>
+      <td><%= reservation.checkout %></td>
+      <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+    </tr>
+  <% end %>
+  
+</tbody>
+</table>

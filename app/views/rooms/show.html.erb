@@ -1,38 +1,38 @@
-<%= link_to "キャンセル", :back %>
+<% if flash[:warning] %>
+  <h1 class="warning"><%= flash[:warning] %></h1>
+<% end %>
+
+<%= link_to "戻る", :back %>
 
 <div class = "room-show-info">
-  <div><%= attachment_image_tag @room, :image, size: "406x243", fallback: "default-room.png" %></div>
-  <div><%= @room.room_name %></div>
-  <div><span>¥</span><%= @room.room_rate %><span>〜</span></div>
+  <div></div>
+  <div><%= @room.name %></div>
+  <div><%= number_to_currency(@room.charge, :unit => "￥",:precision => 0) %>
   <div><%= @room.address %></div>
   <div><%= @room.detail %></div>
 </div>
 
-    <div class = "room-reserve">
-        
-        <%= form_with model:@reservation, url: confirm_reservation_path do |f|%>
-        
-            <%= f.hidden_field :room_id, value: @room.id %>
-            <%= f.hidden_field :user_id, value: @user.id %>
+<div class = "room-reserve">
+  <%= form_with model:@reservation, url: confirm_reservation_path do |f|%>
+    <%# idを関連付け%>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.hidden_field :user_id, value: @user.id %>
 
-            <div class = "room-show-row">
-                <%= f.label "チェックイン" %>
-                <%= f.date_field :checkin_date %>
-            </div>
-
-            <div class = "room-show-row">
-                <%= f.label "チェックアウト" %>
-                <%= f.date_field :checkout_date %>
-            </div>
-
-            <div class = "room-show-row">
-                <%= f.label "人数" %>
-                <%= f.number_field :guest %>
-            </div>
-
-            <ul>
-                <li><%= f.submit "この日程で予約する", class: "room-reserve-btn" %></li>
-            </ul>
-
-        <% end %>
+    <div>
+        <%= f.label "チェックイン" %>
+        <%= f.date_field :checkin %>
     </div>
+    <div>
+        <%= f.label "チェックアウト" %>
+        <%= f.date_field :checkout %>
+    </div>
+    <div>
+        <%= f.label "人数" %>
+        <%= f.number_field :guest, min: 1 %>
+    </div>
+
+    <ul>
+        <li><%= f.submit "この日程で予約する", class: "room-reserve-btn" %></li>
+    </ul>
+  <% end %>
+</div>
