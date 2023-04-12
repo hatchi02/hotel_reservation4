@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :room
   has_many :reservation
+
+  mount_uploader :image, ImageUploader
 end

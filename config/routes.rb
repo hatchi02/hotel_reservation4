@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users/account'
   get 'users/profile'
+  get 'users/profile/edit' => 'users#profile_edit'
+  patch 'users/profile/update' => 'users#profile_update'
   
   resources :rooms do
     collection do

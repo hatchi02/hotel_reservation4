@@ -1,13 +1,29 @@
-<%
-=begin%>
-  トップページ、room登録,room予約 -> userプロフィール編集、部屋予約一覧、検索機能
-<%
-=end%>
-
-<h1>Homes#index</h1>
 <h1>これはlocalhost3000 接続時に表示されるトップページ</h1>
 
-<p>ログイン</p>
-<%= link_to "部屋登録", new_room_path%>
-<p>room 予約</p>
+<div class="top-content">
+  <h1 class="top-message">Potepan Shareでまだ体験したことのない旅をしよう</h1>
+  <div class="top-search">
+    <%= form_with url: rooms_path, method: :get, local: true do |f| %>
+        <%= f.text_field :search_area, placeholder: "エリア名を入力", class: "top-text-field" %>
+        <%= f.submit "検索" ,class: "top-button"%>
+    <% end %>
+  </div>
+</div>
 
+<h2>おすすめのエリア</h2>
+  <div classs="area">
+    <div class="tokyo search-img">
+        <span>東京</span>
+        <%= link_to image_tag("tokyo.jpg", class: "top-image"), controller:"rooms", actions:"index", search_area: "東京" %>
+    <div class="osaka search-img">
+        <span>大阪</span>
+        <%= link_to image_tag("osaka.jpg", class: "top-image"), controller:"rooms", actions:"index", search_area: "大阪" %>
+    <div class="kyoto search-img">
+      <span>京都</span>
+      <%= link_to image_tag("kyoto.jpg", class: "top-image"), controller:"rooms", actions:"index", search_area: "京都" %>
+    </div>
+    <div class="sapporo search-img">
+      <span>札幌</span>
+      <%= link_to image_tag("sapporo.jpg", class: "top-image"), controller:"rooms", actions:"index", search_area: "札幌"%>
+    </div>
+  </div>
