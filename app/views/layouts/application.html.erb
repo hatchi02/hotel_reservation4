@@ -22,7 +22,8 @@
           <%if user_signed_in?%>
             <!-- 折り畳み展開ポインタ -->
             <div class='user-menu' onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
-              <a style="cursor:pointer;">
+              <a style="cursor:pointer;" calss='header'>
+                <%= image_tag current_user.image.blank? ? 'default-avatar' : current_user.image.url, size: "40x40", class: "layout-img"%>
                 <%= current_user.name %> ▼ 
               </a>
             </div>
@@ -33,11 +34,7 @@
             <div class="accordion-menu" id="open" style="display:none;clear:both;" >
               <ul>
                 <li><%= link_to '施設の新規登録', new_room_path %></li>
-                <%
-=begin%>
- <li><%= link_to '予約済み一覧', reservations_path %></li> 
-<%
-=end%>
+                <li><%= link_to '予約済み一覧', reservations_path %></li> 
                 <li><%= link_to '登録済み一覧', '/rooms/own' %></li>
                 <li><%= link_to 'アカウント設定', '/users/account' %></li>
                 <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>

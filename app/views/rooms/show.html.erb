@@ -5,7 +5,7 @@
 <%= link_to "戻る", :back %>
 
 <div class = "room-show-info">
-  <div></div>
+  <div><%= image_tag @room.image.blank? ? 'default-room' : @room.image.url , size:'550×317' %></div>
   <div><%= @room.name %></div>
   <div><%= number_to_currency(@room.charge, :unit => "￥",:precision => 0) %>
   <div><%= @room.address %></div>

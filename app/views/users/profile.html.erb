@@ -7,7 +7,7 @@
   </div>
   <div class='mail-information'>
     <p>アイコン画像</p>
-    <div><%= image_tag current_user.image.blank? ? 'default-avatar' : current_user.image.url %></div>
+    <div><%= image_tag current_user.image.blank? ? 'default-avatar' : current_user.image.url, size:"80x80" %></div>
   </div>
   <div class='password-information'>
     <p>名前</p>
