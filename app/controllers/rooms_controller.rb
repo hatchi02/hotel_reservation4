@@ -1,6 +1,12 @@
 class RoomsController < ApplicationController
   def index
     @rooms = Room.all
+    # あいまい検索
+    if params[:search_area] != "" || params[:search_keyword] != ""
+      @rooms = Room.where("address LIKE? AND name LIKE?", "%#{params[:search_area]}%","%#{params[:search_keyword]}%")
+    else
+      @rooms = Room.all
+    end
   end
 
   def new

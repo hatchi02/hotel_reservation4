@@ -16,13 +16,13 @@
     <% end %>
 
     <header>
-      <h1>Potepan Share</h1>
+      <h1><a href="/" class="top-page-link">Potepan Share</a></h1>
         <div class="header-menu">
           <%# ログイン中にユーザーネームを表示 %>
           <%if user_signed_in?%>
             <!-- 折り畳み展開ポインタ -->
             <div class='user-menu' onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
-              <a style="cursor:pointer;" calss='header'>
+              <a style="cursor:pointer;">
                 <%= image_tag current_user.image.blank? ? 'default-avatar' : current_user.image.url, size: "40x40", class: "layout-img"%>
                 <%= current_user.name %> ▼ 
               </a>
@@ -47,14 +47,12 @@
         <% end %>
         </div>
     </header>
-    <p>↑ここまで共通</p>
 
     <%= yield %>
 
-    <p>↓ここから共通</p>
     <footer>
       <div class="footer-content">
-        <a href="/" class="footer-title">Potepan Share</a>
+        <a href="/" class="top-page-link">Potepan Share</a>
         <p>Copyright © Potepan Share 2023 All rights reserved</p>
       </div>
     </footer>

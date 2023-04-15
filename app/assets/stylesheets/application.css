@@ -15,6 +15,33 @@
  */
 
 /* top/index部分 */
+header {
+  width: 90%;
+  background-color: #1c1d3b;
+}
+
+.top-page-link {
+  text-decoration: none;
+  color: #ffff;
+  float: left;
+}
+
+.header-menu {
+  float: rigth;
+}
+
+.user-menu {
+  color: #ffff;
+}
+
+.accordion-menu {
+  text-decoration: none;
+  color: #ffff;
+}
+
+.accordion-menu > li {
+  list-style: none;
+}
 .top-content {
   height: 750px;
   width: 100%;
@@ -59,10 +86,22 @@
   border: none;
 }
 
-
 .top-image {
   height: 455px;
   width: 320px;
+}
+
+footer {
+  background-color: #1c1d3b;
+  height: 300px;
+}
+
+.footer-content > .top-page-link {
+  font-size: 50px;
+}
+
+.footer-content > p {
+  color: #ffff;
 }
 
 /* room/new */
