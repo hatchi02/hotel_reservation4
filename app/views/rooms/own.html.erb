@@ -17,7 +17,7 @@
       <% @rooms.each do |room| %>
         <tr>
           <td><%= image_tag room.image.blank? ? 'default-room' : room.image.url, size: "120x70" %></td>
-          <td><%= room.name %></td>s
+          <td><%= room.name %></td>
           <td><%= room.detail %></td>
           <td><%= number_to_currency(room.charge, :unit => "￥",:precision => 0) %>~</td>
           <td><%= room.created_at.strftime("%Y/%m/%d")  %></td>
