@@ -14,7 +14,7 @@
 
 <div class = "room-reserve">
   <%= form_with model:@reservation, url: confirm_reservation_path do |f|%>
-    <%# idを関連付け%>
+    <%# idを関連付け %>
     <%= f.hidden_field :room_id, value: @room.id %>
     <%= f.hidden_field :user_id, value: @user.id %>
 

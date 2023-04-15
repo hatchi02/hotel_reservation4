@@ -1,27 +1,14 @@
-<h4>全ての部屋一覧</h4>
+<h4><%= "#{Room.count}件が見つかりました。" %></h4>
   
-<table>
-  <thead>
-    <tr>
-      <th>施設名</th>
-      <th>住所</th>
-      <th>紹介文</th>
-      <th>料金</th>
-      <th>作成日</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @rooms.each do |room| %>
-      <tr>
-        <td><%= room.name %></td>
-        <td><%= room.address %></td>
-        <td><%= room.detail %></td>
-        <td><%= number_to_currency(room.charge, :unit => "￥",:precision => 0) %>~</td>
-        <td><%= room.created_at.strftime("%Y/%m/%d")  %></td>
-        <td><%= link_to(room_path(room.id)) do %>詳細はこちら<% end %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class='room-index'>
+  <% @rooms.each do |room| %>
+    <%= image_tag room.image.blank? ? 'default-room' :room.image.url , size: "120x70"  %>
+    <%= link_to "#{room.name}", room %>
+    <%= room.address %>
+    <span>★★★★★</span>
+    <%= room.detail %>
+    <%= number_to_currency(room.charge, :unit => "￥",:precision => 0) %>~
+    <%= room.created_at.strftime("%Y/%m/%d")  %>
+    <%= link_to(room_path(room.id)) do %>詳細はこちら<% end %>
+  <% end %>
+</div>

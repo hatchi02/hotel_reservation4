@@ -16,12 +16,15 @@
     
       <% @rooms.each do |room| %>
         <tr>
-          <td><%= image_tag @room.image.blank? ? 'default-room' : @room.image.url , size:'120×69' %></td>
+          <td><%= image_tag room.image.blank? ? 'default-room' : room.image.url, size: "120x70" %></td>
           <td><%= room.name %></td>s
           <td><%= room.detail %></td>
           <td><%= number_to_currency(room.charge, :unit => "￥",:precision => 0) %>~</td>
           <td><%= room.created_at.strftime("%Y/%m/%d")  %></td>
-          <td><%= link_to(room_path(room.id)) do %>詳細はこちら<% end %></td>
+          <td>
+            <%= link_to "編集", [:edit, room] %>
+            <%= link_to "施設を削除", room, method: :delete, data: { confirm: "本当に削除しますか？（取り消しできません）" } %>  
+          </td>
         </tr>
       <% end %>
     </tbody>
