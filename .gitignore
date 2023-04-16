@@ -29,7 +29,7 @@
 /public/assets
 .byebug_history
 
-# githubリポジトリーにアップロードされた画像ファイルを上げない
+# githubリポジトリにアップロードされた画像ファイルを上げない
 /public/uploads/*
 
 # Ignore master key for decrypting credentials and more.
