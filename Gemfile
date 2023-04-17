@@ -61,3 +61,6 @@ gem 'devise'
 # images upload function
 gem 'carrierwave'
 gem 'mini_magick'
+
+# Reduces boot times through caching; required in config/boot.rb
+gem 'rails-i18n'
