@@ -13,6 +13,8 @@
       <tr>
         <th>画像</th>
         <th>施設名</th>
+        <th>住所</th>
+        <th></th>
         <th>紹介文</th>
         <th>料金</th>
         <th>作成日</th>
@@ -26,6 +28,8 @@
         <tr>
           <td><%= image_tag room.image.blank? ? 'default-room' : room.image.url, size: "120x70" %></td>
           <td><%= link_to "#{room.name}", room %></td>
+          <td><%= room.address %></td>
+          <td><span>★★★★★</span></td>
           <td><%= room.detail %></td>
           <td><%= number_to_currency(room.charge, :unit => "￥",:precision => 0) %>~</td>
           <td><%= room.created_at.strftime("%Y/%m/%d")  %></td>
