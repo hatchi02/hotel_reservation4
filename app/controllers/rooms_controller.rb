@@ -20,13 +20,11 @@ class RoomsController < ApplicationController
     @room.user_id = current_user.id
     if @room.save
       flash[:notice] = "部屋を登録しました"
-      redirect_to :rooms
+      redirect_to "/rooms/own"
     else
-      flash[:warning] = "登録に失敗しました！！"
-      @room = Room.new
       #ユーザーと関連づけ
       @user = User.find(current_user.id)
-      render new_room_path
+      render "new"
     end
   end
 

@@ -16,7 +16,6 @@ class ReservationsController < ApplicationController
       @reservation = Reservation.new
       @room= Room.find(params[:id])
       @user = User.find(current_user.id)
-      flash[:warning] = "予約内容に誤りがあります"
       render "/rooms/show"
     end
   end

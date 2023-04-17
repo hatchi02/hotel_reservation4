@@ -1,8 +1,6 @@
-<% if flash[:warning] %>
-  <h1 class="warning"><%= flash[:warning] %></h1>
-<% end %>
-
 <%= link_to "戻る", :back %>
+
+<%= render "shared/error", obj: @room %>
 
 <div class = "room-show-info">
   <div><%= image_tag @room.image.blank? ? 'default-room' : @room.image.url , size:'550×317' %></div>

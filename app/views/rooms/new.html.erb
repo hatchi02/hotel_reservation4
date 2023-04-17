@@ -1,8 +1,7 @@
-<% if flash[:warning] %>
-  <h1 class="warning"><%= flash[:warning] %></h1>
-<% end %>
-
 <h3>部屋新規登録</h3>
+
+<%= render "shared/error", obj: @room %>
+
 
 <%= form_with model: @room do |f| %>
   <table>
