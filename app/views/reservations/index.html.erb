@@ -24,7 +24,7 @@
     
     <tr>
       <td><%= image_tag room.image.blank? ? 'default-room' :room.image.url , size: "120x70"  %></td>
-      <td><%= room.name%></td>
+      <td><%= link_to "#{room.name}", room %></td>
       <td><%= room.detail%></td>
       <td><%= number_to_currency(cost, :unit => "￥",:precision => 0) %></td>
       <td><%= reservation.checkin.strftime("%Y/%m/%d") %></td>

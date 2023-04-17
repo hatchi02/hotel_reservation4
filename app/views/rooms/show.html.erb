@@ -1,6 +1,6 @@
 <%= link_to "戻る", :back %>
 
-<%= render "shared/error", obj: @room %>
+<%= render "shared/error", obj: @reservation %>
 
 <div class = "room-show-info">
   <div><%= image_tag @room.image.blank? ? 'default-room' : @room.image.url , size:'550×317' %></div>

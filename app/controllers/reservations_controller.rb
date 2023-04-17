@@ -13,8 +13,6 @@ class ReservationsController < ApplicationController
       @stay_days = stay_days.to_i
       @cost = @room.charge * @reservation.guest * @stay_days
     else
-      @reservation = Reservation.new
-      @room= Room.find(params[:id])
       @user = User.find(current_user.id)
       render "/rooms/show"
     end

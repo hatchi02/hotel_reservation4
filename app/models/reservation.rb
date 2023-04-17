@@ -1,7 +1,7 @@
 class Reservation < ApplicationRecord
   validates :checkin, presence: true
   validates :checkout, presence: true
-  validates :guest, presence: true,numericality: true
+  validates :guest, presence: true, numericality: true
   
   validate :checkin_check
   def checkin_check
