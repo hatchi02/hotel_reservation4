@@ -45,9 +45,14 @@ class RoomsController < ApplicationController
   
   def update
     @room = Room.find(params[:id])
-    @room.update(room_params)
-    flash[:notice] = "施設を編集しました"
-    redirect_to "/rooms/own"
+    if @room.update(room_params)
+      flash[:notice] = "施設を編集しました"
+      redirect_to "/rooms/own"
+    else
+      #ユーザーidと関連付け
+      @user = User.find(current_user.id)
+      render "edit"
+    end
   end
 
   def destroy
