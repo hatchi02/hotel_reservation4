@@ -5,6 +5,8 @@
     <h2>プロフィール</h2>
   </div>
 
+  <%= render "shared/error", obj: @user %>
+
   <%= form_with model:@user, url: users_profile_update_path do |f|%>
     <div>
       <%= f.label :image,"アイコン画像",class: "form-label"%>

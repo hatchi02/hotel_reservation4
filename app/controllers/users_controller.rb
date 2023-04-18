@@ -11,8 +11,11 @@ class UsersController < ApplicationController
 
   def profile_update
     @user = User.find(current_user.id)
-    @user.update(params.require(:user).permit(:name,:profile,:image))
-    redirect_to "/users/profile"
+    if @user.update(params.require(:user).permit(:name,:profile,:image))
+       redirect_to "/users/profile"
+    else
+      render 'profile_edit'
+    end
   end
 
   private
