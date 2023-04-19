@@ -20,5 +20,7 @@ module HotelReservation4
     # config.eager_load_paths << Rails.root.join("extras")
     config.action_controller.permit_all_parameters = true
     config.i18n.default_locale = :ja
+    # タイムゾーンを日本にする
+    config.time_zone = 'Tokyo'
   end
 end

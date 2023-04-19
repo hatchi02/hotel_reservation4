@@ -5,7 +5,7 @@
 <div class = "room-show-info">
   <div><%= image_tag @room.image.blank? ? 'default-room' : @room.image.url , size:'550×317' %></div>
   <div><%= @room.name %></div>
-  <div><%= number_to_currency(@room.charge, :unit => "￥",:precision => 0) %>
+  <div><%= number_to_currency(@room.charge, :unit => "￥",:precision => 0) %>〜/日</div>
   <div><%= @room.address %></div>
   <div><%= @room.detail %></div>
 </div>
