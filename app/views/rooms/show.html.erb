@@ -1,0 +1,36 @@
+<%= link_to "戻る", :back %>
+
+<%= render "shared/error", obj: @reservation %>
+
+<div class = "room-show-info">
+  <div><%= image_tag @room.image.blank? ? 'default-room' : @room.image.url , size:'550×317' %></div>
+  <div><%= @room.name %></div>
+  <div><%= number_to_currency(@room.charge, :unit => "￥",:precision => 0) %>〜/日</div>
+  <div><%= @room.address %></div>
+  <div><%= @room.detail %></div>
+</div>
+
+<div class = "room-reserve">
+  <%= form_with model:@reservation, url: confirm_reservation_path do |f|%>
+    <%# idを関連付け %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+
+    <div>
+        <%= f.label "チェックイン" %>
+        <%= f.date_field :checkin %>
+    </div>
+    <div>
+        <%= f.label "チェックアウト" %>
+        <%= f.date_field :checkout %>
+    </div>
+    <div>
+        <%= f.label "人数" %>
+        <%= f.number_field :guest, min: 1 %>
+    </div>
+
+    <ul>
+        <li><%= f.submit "この日程で予約する", class: "room-reserve-btn" %></li>
+    </ul>
+  <% end %>
+</div>
